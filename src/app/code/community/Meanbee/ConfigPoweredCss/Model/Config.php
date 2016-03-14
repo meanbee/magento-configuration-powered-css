@@ -68,4 +68,15 @@ class Meanbee_ConfigPoweredCss_Model_Config
         $store = $store ? $store : Mage::app()->getStore()->getStoreId();
         return sprintf(self::CSS_FILENAME, $store);
     }
+
+    /**
+     * Get full filepath to CSS file
+     *
+     * @param $store
+     * @return string
+     */
+    public function getFullCssFilePath($store = null)
+    {
+        return Mage::getBaseDir('skin') . '/frontend/base/default/' . $this->getCssFilename($store);
+    }
 }
