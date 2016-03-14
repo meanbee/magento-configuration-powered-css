@@ -1,0 +1,3 @@
+src/app/code/community/Meanbee/ConfigPoweredCss app/code/community/Meanbee/ConfigPoweredCss
+src/app/etc/modules/* app/etc/modules/
+package.xml var/connect/Meanbee_ConfigPoweredCss.xml
