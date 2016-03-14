@@ -31,6 +31,7 @@ class Meanbee_ConfigPoweredCss_Model_Css
         }
 
         $block = Mage::getBlockSingleton('meanbee_configpoweredcss/css');
+        $block->setData('area', 'frontend');
         return $this->_writeToFile($block->toHtml(), $storeId);
     }
 
