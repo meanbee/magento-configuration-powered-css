@@ -1,0 +1,13 @@
+<?php
+    /** @var Meanbee_ConfigPoweredCss_Block_Adminhtml_Regenerate $this */
+?>
+<table class="form-list">
+    <tr>
+        <td class="scope-label">
+            <button onclick="setLocation('<?php echo $this->getRegenerateUrl() ?>')" type="button" class="scalable"><span><span><span><?php echo Mage::helper('adminhtml')->__('Regenerate Configuration Powered CSS') ?></span></span></span></button>
+        </td>
+        <td class="scope-label">
+            <?php echo Mage::helper('adminhtml')->__('Pregenerated CSS files based on configuration values')?>
+        </td>
+    </tr>
+</table>

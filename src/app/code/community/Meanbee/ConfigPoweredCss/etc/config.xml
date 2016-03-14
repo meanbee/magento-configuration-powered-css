@@ -33,6 +33,26 @@
             </controller_action_layout_generate_xml_before>
         </events>
     </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Meanbee_ConfigPoweredCss after="Mage_Adminhtml">Meanbee_ConfigPoweredCss_Adminhtml</Meanbee_ConfigPoweredCss>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <meanbee_configpoweredcss>
+                    <file>meanbee/configpoweredcss.xml</file>
+                </meanbee_configpoweredcss>
+            </updates>
+        </layout>
+    </adminhtml>
     <default>
         <dev>
             <meanbee_configpoweredcss>

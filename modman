@@ -1,3 +1,6 @@
 src/app/code/community/Meanbee/ConfigPoweredCss app/code/community/Meanbee/ConfigPoweredCss
+src/app/design/adminhtml/default/default/layout/meanbee/configpoweredcss.xml app/design/adminhtml/default/default/layout/meanbee/configpoweredcss.xml
+src/app/design/adminhtml/default/default/template/meanbee/configpoweredcss app/design/adminhtml/default/default/template/meanbee/configpoweredcss
+src/app/design/frontend/base/default/template/meanbee/configpoweredcss app/design/frontend/base/default/template/meanbee/configpoweredcss
 src/app/etc/modules/* app/etc/modules/
 package.xml var/connect/Meanbee_ConfigPoweredCss.xml

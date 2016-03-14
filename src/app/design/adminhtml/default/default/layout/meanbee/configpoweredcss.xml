@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_cache_index>
+        <reference name="cache.additional">
+            <block type="meanbee_configpoweredcss/adminhtml_regenerate" name="meanbee.configpoweredcss.regenerate">
+                <action method="setTemplate">
+                    <template>meanbee/configpoweredcss/regenerate.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_cache_index>
+</layout>
