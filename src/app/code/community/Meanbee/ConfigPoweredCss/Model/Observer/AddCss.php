@@ -44,6 +44,12 @@ class Meanbee_ConfigPoweredCss_Model_Observer_AddCss implements Meanbee_ConfigPo
         $block = $this->config->getHeadBlockReference();
         $stylesheet = $this->config->getCssFilename();
 
+        // Check if file exists first to avoid 404.
+        if (!file_exists($this->config->getFullCssFilePath())) {
+            $this->logger->debug("$stylesheet does not exist, refusing to add.");
+            return;
+        }
+
         $this->_addStylesheet($layout, $block, $stylesheet);
     }
 
@@ -58,12 +64,6 @@ class Meanbee_ConfigPoweredCss_Model_Observer_AddCss implements Meanbee_ConfigPo
      */
     protected function _addStylesheet($layout, $block, $stylesheet)
     {
-        // Check if file exists first to avoid 404.
-        if (!file_exists(Mage::getDesign()->getSkinUrl($stylesheet))) {
-            $this->logger->debug("$stylesheet does not exist, refusing to add.");
-            return;
-        }
-
         $this->logger->debug("Adding stylesheet $stylesheet");
 
         $layout->getUpdate()->addUpdate(
