@@ -64,12 +64,10 @@ class Meanbee_ConfigPoweredCss_Model_Observer_AddCss implements Meanbee_ConfigPo
      */
     protected function _addStylesheet($layout, $block, $stylesheet)
     {
-        $this->logger->debug("Adding stylesheet $stylesheet");
-
-        $layout->getUpdate()->addUpdate(
-            '<reference name="' . $block . '">
-                <action method="addItem"><type>skin_css</type><name>' . $stylesheet . '</name><params/><if /></action>
-            </reference>'
-        );
+        $headBlock = $layout->getBlock($block);
+        if ($headBlock instanceof Mage_Page_Block_Html_Head) {
+            $this->logger->debug("Adding stylesheet $stylesheet");
+            $headBlock->addItem('skin_css', $stylesheet);
+        }
     }
 }

@@ -22,7 +22,7 @@
             </meanbee_configpoweredcss>
         </models>
         <events>
-            <controller_action_layout_generate_xml_before>
+            <controller_action_layout_generate_blocks_after>
                 <observers>
                     <meanbee_configpoweredcss_addcss>
                         <type>singleton</type>
@@ -30,7 +30,7 @@
                         <method>observe</method>
                     </meanbee_configpoweredcss_addcss>
                 </observers>
-            </controller_action_layout_generate_xml_before>
+            </controller_action_layout_generate_blocks_after>
         </events>
     </global>
     <admin>
