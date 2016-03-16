@@ -13,6 +13,7 @@ class Meanbee_ConfigPoweredCss_Adminhtml_ConfigPoweredCssController extends Mage
         $stores = Mage::app()->getStores();
         foreach ($stores as $storeId => $store) {
             try {
+                Mage::app()->setCurrentStore($storeId);
                 $css->publish($storeId);
             } catch (Exception $e) {
                 $session->addError($e->getMessage());
@@ -20,6 +21,8 @@ class Meanbee_ConfigPoweredCss_Adminhtml_ConfigPoweredCssController extends Mage
                 return;
             }
         }
+
+        Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
 
         $session->addSuccess("Successfully regenerated CSS file(s)");
         $this->_redirect('*/cache');
