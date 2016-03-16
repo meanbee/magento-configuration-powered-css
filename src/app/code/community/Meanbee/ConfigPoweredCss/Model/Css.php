@@ -30,8 +30,19 @@ class Meanbee_ConfigPoweredCss_Model_Css
             return false;
         }
 
+        $package = Mage::getStoreConfig('design/package/name', $storeId);
+        $theme = Mage::getStoreConfig('design/theme/template', $storeId);
+        if (!$theme) {
+            $theme = Mage::getStoreConfig('design/theme/default', $storeId);
+        }
+        if (!$theme) {
+            $theme = 'default';
+        }
+
+        Mage::getDesign()->setArea('frontend')->setPackageName($package)->setTheme($theme);
+
         $block = Mage::getBlockSingleton('meanbee_configpoweredcss/css');
-        $block->setData('area', 'frontend');
+
         return $this->_writeToFile($block->toHtml(), $storeId);
     }
 
