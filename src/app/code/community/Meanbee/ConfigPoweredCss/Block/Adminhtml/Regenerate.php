@@ -10,6 +10,6 @@ class Meanbee_ConfigPoweredCss_Block_Adminhtml_Regenerate extends Mage_Adminhtml
      */
     public function getRegenerateUrl()
     {
-        return $this->getUrl('*/configpoweredcss/regenerate');
+        return $this->getUrl('*/configPoweredCss/regenerate');
     }
 }
