@@ -26,7 +26,7 @@
                 <observers>
                     <meanbee_configpoweredcss_addcss>
                         <type>singleton</type>
-                        <class>meanbee_configpoweredcss/observer_addcss</class>
+                        <class>meanbee_configpoweredcss/observer_addCss</class>
                         <method>observe</method>
                     </meanbee_configpoweredcss_addcss>
                 </observers>
