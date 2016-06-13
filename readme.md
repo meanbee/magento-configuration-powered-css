@@ -19,7 +19,7 @@ The user stories that this extension should achieve and maintain are as follows.
     - The CSS file should be generated on clicking of "Publish" button in cache management.
 - Generates CSS File
     - CSS file should be in a directory which can be written to be the web. 
-        - While there was a preference for media, we have chosen skin to maintain compatibility with CSS merging.
+        - The file is generated into the media folder, the drawback of this that the file cannot be merged when css merging is enabled. [More info](https://github.com/meanbee/magento-configuration-powered-css/issues/5)
     - CSS file will be plain CSS and will have no interaction with frontend build tools.
     - CSS file will be generated with a custom block and template.
         - Each theme can then have it’s own template file if required.

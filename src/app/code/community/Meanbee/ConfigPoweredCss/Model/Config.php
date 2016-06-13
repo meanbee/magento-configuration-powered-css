@@ -6,7 +6,8 @@ class Meanbee_ConfigPoweredCss_Model_Config
     const XML_PATH_HEAD_BLOCK = 'dev/meanbee_configpoweredcss/head_block';
     const XML_PATH_LOGGING = 'dev/meanbee_configpoweredcss/logging';
     const LOG_FILENAME = 'meanbee_configpoweredcss.log';
-    const CSS_FILENAME = 'css/meanbee_configpoweredcss_%d.css';
+    const CSS_FILENAME = 'meanbee_configpoweredcss_%d.css';
+    const CSS_PATH = 'css/config/%s/%s/';
 
     /**
      * Is the extension enabled?
@@ -77,6 +78,66 @@ class Meanbee_ConfigPoweredCss_Model_Config
      */
     public function getFullCssFilePath($store = null)
     {
-        return Mage::getBaseDir('skin') . '/frontend/base/default/' . $this->getCssFilename($store);
+        return $this->getCssDirectoryPath() . $this->getCssFilename($store);
+    }
+
+    /**
+     * Get directory for CSS files
+     *
+     * @param $store
+     * @return string
+     */
+    public function getCssDirectoryPath($store = null)
+    {
+
+        return Mage::getBaseDir('media') . $this->getCssPath($store);
+    }
+
+    /**
+     * Retrieve the CSS path relative to the media directory
+     * @param null $store
+     * @return string
+     */
+    public function getCssPath($store = null)
+    {
+        return sprintf(self::CSS_PATH, $this->_getDesignPackage($store), $this->_getDesignTheme($store));
+    }
+
+    /**
+     * Get full URL for CSS file
+     * @param null $store
+     * @return string
+     */
+    public function getCssFileUrl($store = null)
+    {
+        return Mage::getUrl(sprintf('media/%s', $this->getCssPath($store))) . $this->getCssFilename($store);
+    }
+
+    /**
+     * Get the current package for store
+     * @param int|null $store
+     * @return mixed
+     */
+    protected function _getDesignPackage($store = null)
+    {
+        return Mage::getStoreConfig('design/package/name', $store);
+    }
+
+    /**
+     * Get the current theme for the store
+     * @param int|null $store
+     * @return string
+     */
+    protected function _getDesignTheme($store = null)
+    {
+        $theme = Mage::getStoreConfig('design/theme/template', $store);
+        if (!$theme) {
+            $theme = Mage::getStoreConfig('design/theme/default', $store);
+        }
+        if (!$theme) {
+            $theme = 'default';
+        }
+
+        return $theme;
     }
 }

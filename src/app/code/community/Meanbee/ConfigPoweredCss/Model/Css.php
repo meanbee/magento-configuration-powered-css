@@ -61,6 +61,10 @@ class Meanbee_ConfigPoweredCss_Model_Css
             return false;
         }
 
+        if (!is_dir($this->config->getCssDirectoryPath($storeId))) {
+            mkdir($this->config->getCssDirectoryPath($storeId), 0755, true);
+        }
+
         $file = $this->config->getFullCssFilePath($storeId);
         $result = file_put_contents($file, $string, LOCK_EX);
 
