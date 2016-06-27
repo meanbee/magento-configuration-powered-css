@@ -90,7 +90,7 @@ class Meanbee_ConfigPoweredCss_Model_Config
     public function getCssDirectoryPath($store = null)
     {
 
-        return Mage::getBaseDir('media') . $this->getCssPath($store);
+        return Mage::getBaseDir('media') . DS . $this->getCssPath($store);
     }
 
     /**
@@ -104,13 +104,26 @@ class Meanbee_ConfigPoweredCss_Model_Config
     }
 
     /**
-     * Get full URL for CSS file
+     * Generate the URL to access the stylesheet for the store.
+     *
      * @param null $store
      * @return string
      */
     public function getCssFileUrl($store = null)
     {
-        return Mage::getUrl(sprintf('media/%s', $this->getCssPath($store))) . $this->getCssFilename($store);
+        $url_parts = array(
+            Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA),
+            $this->getCssPath($store),
+            $this->getCssFilename($store)
+        );
+
+        array_walk($url_parts, function (&$item) {
+            $item = trim($item, '/');
+        });
+
+        $url = join('/', $url_parts);
+
+        return $this->stripProtocolFromUrl($url);
     }
 
     /**
@@ -139,5 +152,16 @@ class Meanbee_ConfigPoweredCss_Model_Config
         }
 
         return $theme;
+    }
+
+    /**
+     * Given a URL, remove the protocol.  For example, "https://test.com/jpeg" becomes "//test.com/jpeg".
+     *
+     * @param string $url
+     * @return string
+     */
+    protected function stripProtocolFromUrl($url)
+    {
+        return preg_replace('/^https?:/', '', $url);
     }
 }
