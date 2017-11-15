@@ -26,19 +26,18 @@ class Meanbee_Configpoweredcss_Regenerate extends Mage_Shell_Abstract
                     Mage::app()->setCurrentStore($storeId);
                     $css->publish($storeId);
                 } catch (Exception $e) {
-                    Mage::logException($e);
-                    return;
+                    fwrite(STDERR, sprintf('There was an error when regenerating the config powered css: %s',
+                        $e->getTraceAsString()));
+                    exit(1);
                 }
             }
 
-            fwrite(STDERR,
+            fwrite(STDOUT,
                 "Config powered css has been regenerated successfully.\n");
             exit(0);
         } catch (Exception $e) {
-            Mage::logException($e);
-
             fwrite(STDERR,
-                "There was an error when regenerating the config powered css, it has been logged.\n");
+                sprintf('There was an error when regenerating the config powered css: %s', $e->getTraceAsString()));
             exit(1);
         }
     }
