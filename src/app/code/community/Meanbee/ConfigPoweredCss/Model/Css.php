@@ -41,7 +41,7 @@ class Meanbee_ConfigPoweredCss_Model_Css
 
         Mage::getDesign()->setArea('frontend')->setPackageName($package)->setTheme($theme);
 
-        $block = Mage::getBlockSingleton('meanbee_configpoweredcss/css');
+        $block = Mage::app()->getLayout()->createBlock('meanbee_configpoweredcss/css');
 
         return $this->_writeToFile($block->toHtml(), $storeId);
     }

@@ -3,3 +3,4 @@ src/app/design/adminhtml/default/default/layout/meanbee/configpoweredcss.xml app
 src/app/design/adminhtml/default/default/template/meanbee/configpoweredcss app/design/adminhtml/default/default/template/meanbee/configpoweredcss
 src/app/design/frontend/base/default/template/meanbee/configpoweredcss app/design/frontend/base/default/template/meanbee/configpoweredcss
 src/app/etc/modules/* app/etc/modules/
+src/shell/meanbee/configpoweredcss/* shell/meanbee/configpoweredcss/
