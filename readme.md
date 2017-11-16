@@ -40,3 +40,11 @@ The observer `Meanbee_ConfigPoweredCss_Model_Observer_AddCss` adds the CSS file 
 
 `Meanbee_ConfigPoweredCss_Model_Css` is responsible for writing to file. The content of which comes from `Meanbee_ConfigPoweredCss_Block_Css` and associated template `meanbee/configpoweredcss/css.phtml`.
 
+## Command Line Support
+
+Configpowered Css can also be regenerated from the command line, using the php script found in the shell directory, `Meanbee_Configpoweredcss_Regenerate` . This will perform the same action as pressing the button in the admin area. The script will output whether it has regenerated successfully or not, and supply the exception if it ran into one. 
+  
+An example of running the script is:
+
+	php shell/meanbee/configpoweredcss/regenerate.php
+    Config powered css has been regenerated successfully.
