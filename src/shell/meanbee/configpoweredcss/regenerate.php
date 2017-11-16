@@ -17,8 +17,7 @@ class Meanbee_Configpoweredcss_Regenerate extends Mage_Shell_Abstract
         try {
             Mage::helper('meanbee_configpoweredcss')->regenerateConfigPoweredCss();
         } catch (Exception $e) {
-            fwrite(STDERR, sprintf('There was an error when regenerating the config powered css: %s',
-                $e->getTraceAsString()));
+            fwrite(STDERR, sprintf('There was an error when regenerating the config powered css: %s', $e->getTraceAsString()));
             exit(1);
         }
 

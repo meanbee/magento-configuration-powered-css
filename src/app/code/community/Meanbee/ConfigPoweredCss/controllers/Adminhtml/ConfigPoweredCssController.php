@@ -16,8 +16,6 @@ class Meanbee_ConfigPoweredCss_Adminhtml_ConfigPoweredCssController extends Mage
             return;
         }
 
-        Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
-
         $session->addSuccess("Successfully regenerated CSS file(s)");
         $this->_redirect('*/cache');
     }

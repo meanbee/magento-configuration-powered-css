@@ -12,12 +12,14 @@ class Meanbee_ConfigPoweredCss_Helper_Data extends Mage_Core_Helper_Abstract
         /** @var Meanbee_ConfigPoweredCss_Model_Css $css */
         $css = Mage::getModel('meanbee_configpoweredcss/css');
 
+        $originalStore = Mage::app()->getStore();
         $stores = Mage::app()->getStores();
 
         foreach ($stores as $storeId => $store) {
             Mage::app()->setCurrentStore($storeId);
             $css->publish($storeId);
         }
-    }
 
+        Mage::app()->setCurrentStore($originalStore);
+    }
 }
