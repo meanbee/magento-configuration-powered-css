@@ -15,11 +15,15 @@ class Meanbee_ConfigPoweredCss_Helper_Data extends Mage_Core_Helper_Abstract
         $originalStore = Mage::app()->getStore();
         $stores = Mage::app()->getStores();
 
-        foreach ($stores as $storeId => $store) {
-            Mage::app()->setCurrentStore($storeId);
-            $css->publish($storeId);
-        }
 
-        Mage::app()->setCurrentStore($originalStore);
+        try {
+            foreach ($stores as $storeId => $store) {
+                Mage::app()->setCurrentStore($storeId);
+                $css->publish($storeId);
+            }
+        } finally {
+            // Reset the store
+            Mage::app()->setCurrentStore($originalStore);
+        }
     }
 }
